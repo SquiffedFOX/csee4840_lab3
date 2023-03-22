@@ -45,9 +45,11 @@ int main()
   vga_ball_arg_t vla;
   int i;
   static const char filename[] = "/dev/vga_ball";
-  unsigned char x_pos = 0x00;
-  unsigned char y_pos = 0x00;
+  unsigned char x_pos = 80;
+  unsigned char y_pos = 60;
   unsigned char r = 0xff;
+  int x_speed = 1;
+  int y_speed = 1;
   static const vga_ball_color_t colors[] = {
     { 0xff, 0x00, 0x00 }, /* Red */
     { 0x00, 0xff, 0x00 }, /* Green */
@@ -73,14 +75,15 @@ int main()
   print_background_color();
 
   for(;;i++){
-    printf("Enter x");
-    scanf("%d",&x_pos);
-    printf("Enter y");
-    scanf("%d",&y_pos);
-    vga_ball_color_t clor = {r, x_pos, y_pos};
-    set_background_color(&clor);
-    print_background_color();
-
+    x_pos = x_pos + x_speed;
+    y_pos = y_pos +y_speed;
+    if (x_pos==0 || x_pos == 159){
+      x_speed = -x_speed
+    }
+    if (y_pos ==0 || y_pos == 119){
+      y_speed = -y_speed;
+    }
+    usleep(40000);
   }
   
   printf("VGA BALL Userspace program terminating\n");
