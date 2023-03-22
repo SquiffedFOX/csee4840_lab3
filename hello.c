@@ -83,6 +83,9 @@ int main()
     if (y_pos ==0 || y_pos == 119){
       y_speed = -y_speed;
     }
+    vga_ball_color_t a = {0x00,x_pos,y_pos};
+    set_background_color(&a);
+    print_background_color();
     usleep(40000);
   }
   
