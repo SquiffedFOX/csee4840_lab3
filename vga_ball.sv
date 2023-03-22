@@ -40,7 +40,7 @@ module vga_ball(input logic        clk,
    always_comb begin
       {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
       if (VGA_BLANK_n )
-	      if (hcount[10:3] == x_set && vcount[9:2] == y_set)
+	      if (hcount[10:3] == x_set && vcount[9:2] == y_set && !(hcount[2:1]==0 && vcount[1:0]==0) && !(hcount[2:1]==0 && vcount[1:0]==3) && !(hcount[2:1] == 3 && vcount[1:0]==0) && !(hcount[2:1]==3 && vcount[1:0]==3))
 	      {VGA_R, VGA_G, VGA_B} = {8'hff, 8'hff, 8'hff};
 	      else
 	      {VGA_R, VGA_G, VGA_B} = {background_r, background_g, background_b};
