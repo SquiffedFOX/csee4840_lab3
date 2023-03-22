@@ -78,7 +78,7 @@ int main()
     x_pos = x_pos + x_speed;
     y_pos = y_pos +y_speed;
     if (x_pos==0 || x_pos == 159){
-      x_speed = -x_speed
+      x_speed = -x_speed;
     }
     if (y_pos ==0 || y_pos == 119){
       y_speed = -y_speed;
