@@ -74,9 +74,9 @@ int main()
 
   for(;;i++){
     printf("Enter x");
-    scanf("%u",&x_pos);
+    scanf("%d",&x_pos);
     printf("Enter y");
-    scanf("%u",&y_pos);
+    scanf("%d",&y_pos);
     vga_ball_color_t clor = {r, x_pos, y_pos};
     set_background_color(&clor);
     print_background_color();
