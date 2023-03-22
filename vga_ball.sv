@@ -20,8 +20,10 @@ module vga_ball(input logic        clk,
    logic [10:0]   hcount;
    logic [9:0]    vcount;
    logic [7:0] 	  background_r, background_g, background_b;
-   logic [4:0]    x_zero = 5'd1000;
-   logic [4:0]    y_zero = 5'd3;
+   logic [4:0]    x_zero  =  5'd0;
+   logic [4:0]    y_zero  =  5'd0;
+   logic [4:0]    x_set   =  5'd31;
+   logic [4:0]    y_set   =  5'd31;
 	
    vga_counters counters(.clk50(clk), .*);
 
@@ -40,7 +42,7 @@ module vga_ball(input logic        clk,
    always_comb begin
       {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
       if (VGA_BLANK_n )
-	      if (hcount[10:6] == x_zero && vcount[9:5] == y_zero)
+	      if (hcount[10:6] == (x_zero + x_set) && vcount[9:5] == (y_zero + y_set))
 	      {VGA_R, VGA_G, VGA_B} = {8'hff, 8'hff, 8'hff};
 	      else
 	      {VGA_R, VGA_G, VGA_B} = {background_r, background_g, background_b};
