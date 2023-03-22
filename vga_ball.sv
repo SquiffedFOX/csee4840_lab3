@@ -40,7 +40,7 @@ module vga_ball(input logic        clk,
    always_comb begin
       {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
       if (VGA_BLANK_n )
-	      if (hcount[10:6] == x_set && vcount[9:5] == y_set)
+	      if (hcount[8:4] == x_set && vcount[9:5] == y_set)
 	      {VGA_R, VGA_G, VGA_B} = {8'hff, 8'hff, 8'hff};
 	      else
 	      {VGA_R, VGA_G, VGA_B} = {background_r, background_g, background_b};
@@ -103,8 +103,7 @@ module vga_counters(
 
    // Horizontal sync: from 0x520 to 0x5DF (0x57F)
    // 101 0010 0000 to 101 1101 1111
-   assign VGA_HS = !( (hcount[10:8] == 3'b101) &
-		      !(hcount[7:5] == 3'b111));
+   assign VGA_HS = !( (hcount[10:8] == 3'b101) & !(hcount[7:5] == 3'b111));
    assign VGA_VS = !( vcount[9:1] == (VACTIVE + VFRONT_PORCH) / 2);
 
    assign VGA_SYNC_n = 1'b0; // For putting sync on the green signal; unused
