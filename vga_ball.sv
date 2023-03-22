@@ -20,7 +20,7 @@ module vga_ball(input logic        clk,
    logic [10:0]   hcount;
    logic [9:0]    vcount;
    logic [7:0] 	  background_r, background_g, background_b;
-   logic [4:0]    x_zero = 5'd3;
+   logic [4:0]    x_zero = 5'd1000;
    logic [4:0]    y_zero = 5'd3;
 	
    vga_counters counters(.clk50(clk), .*);
