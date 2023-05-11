@@ -17,8 +17,7 @@ module:
 
 
 hello: hello.c usbkeyboard.c usbkeyboard.h
-
-        hello -Wall -g -o hello hello.c usbkeyboard.c -lusb-1.0
+	hello -Wall -g -o hello hello.c usbkeyboard.c -lusb-1.0
 
 clean:
 	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} clean
