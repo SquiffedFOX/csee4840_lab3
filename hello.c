@@ -47,15 +47,15 @@ int main()
   static const char filename[] = "/dev/vga_ball";
 
   static const vga_ball_color_t colors[] = {
-    { 0xff, 0x00, 0x00 }, /* Red */
-    { 0x00, 0xff, 0x00 }, /* Green */
-    { 0x00, 0x00, 0xff }, /* Blue */
-    { 0xff, 0xff, 0x00 }, /* Yellow */
-    { 0x00, 0xff, 0xff }, /* Cyan */
-    { 0xff, 0x00, 0xff }, /* Magenta */
-    { 0x80, 0x80, 0x80 }, /* Gray */
-    { 0x00, 0x00, 0x00 }, /* Black */
-    { 0xff, 0xff, 0xff }  /* White */
+    { 0x78, 0x87, 0x87 }, /* Red */
+    { 0x32, 0x87, 0x87 }, /* Green */
+    { 0x78, 0x87, 0x87 }, /* Blue */
+    { 0x32, 0x87, 0x87 }, /* Yellow */
+    { 0x78, 0x87, 0x87 }, /* Cyan */
+    { 0x32, 0x87, 0x87 }, /* Magenta */
+    { 0x78, 0x87, 0x87 }, /* Gray */
+    { 0x32, 0x87, 0x87 }, /* Black */
+    { 0x78, 0x87, 0x87 }  /* White */
   };
 
 # define COLORS 9
@@ -73,7 +73,7 @@ int main()
   for (i = 0 ; i < 24 ; i++) {
     set_background_color(&colors[i % COLORS ]);
     print_background_color();
-    usleep(400000);
+    usleep(1000000);
   }
   
   printf("VGA BALL Userspace program terminating\n");
